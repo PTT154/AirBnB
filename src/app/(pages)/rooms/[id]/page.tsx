@@ -70,7 +70,20 @@ export default function RoomDetailPage({ params }: Props) {
         const resolvedParams = await params;
         setId(resolvedParams.id);
         const data = await DetailService.getById(resolvedParams.id);
-        setRoomDetail(data);
+        setRoomDetail({
+          moTa: "",
+          mayGiat: false,
+          banLa: false,
+          tivi: false,
+          dieuHoa: false,
+          wifi: false,
+          bep: false,
+          doXe: false,
+          hoBoi: false,
+          banUi: false,
+          maViTri: 0,
+          ...data,
+        });
       } catch (error) {
         console.error("Error fetching room detail:", error);
       } finally {
