@@ -32,7 +32,11 @@ export const roomService = {
       }
     } catch (error) {
       console.error("Room Service Error:", error);
-      throw new Error("Không lấy được danh sách phòng: " + error.message);
+      if (error instanceof Error) {
+        throw new Error("Không lấy được danh sách phòng: " + error.message);
+      } else {
+        throw new Error("Không lấy được danh sách phòng: " + String(error));
+      }
     }
   },
 };

@@ -62,7 +62,7 @@ export default function RoomCard({ room }: { room: Room }) {
             </Group>
           )}
           
-          {room.beBoi && (
+          {room.hoBoi && (
             <Group gap={4}>
               <IconPool size={14} color="#717171" />
               <Text size="xs" color="dimmed">Bể bơi</Text>
