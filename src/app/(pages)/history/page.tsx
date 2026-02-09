@@ -70,7 +70,12 @@ export default function HistoryPage() {
             for (const booking of data) {
               try {
                 const roomDetail = await DetailService.getById(booking.maPhong.toString());
-                roomDetailsMap[booking.maPhong] = roomDetail;
+                // Đảm bảo có đủ các trường theo RoomDetail
+                roomDetailsMap[booking.maPhong] = {
+                  moTa: "",
+                  maViTri: 0,
+                  ...roomDetail,
+                };
               } catch (error) {
                 console.error(`Error fetching room ${booking.maPhong}:`, error);
               }
