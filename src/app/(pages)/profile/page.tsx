@@ -82,7 +82,7 @@ export default function ProfilePage() {
         // Lấy số đánh giá
         import("@/app/services/comment.service").then(({ commentService }) => {
           commentService.getAll().then((comments) => {
-            const userReviews = Array.isArray(comments) ? comments.filter((c) => c.maNguoiDung === parsedUser.id) : [];
+            const userReviews = Array.isArray(comments) ? comments.filter((c) => c.maNguoiBinhLuan === parsedUser.id) : [];
             setReviewCount(userReviews.length);
           }).catch(() => setReviewCount(0));
         });
