@@ -64,7 +64,11 @@ export default function Signup() {
 
     validate: {
       name: (value) => (value.trim() ? null : "Vui lòng nhập tên"),
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Email không hợp lệ"),
+      email: (value) => {
+        // Regex kiểm tra email phải có @ và domain với dấu chấm phía sau (ví dụ: .com, .vn...)
+        const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
+        return emailRegex.test(value) ? null : "Email không hợp lệ";
+      },
       password: (value) => (value.length >= 6 ? null : "Mật khẩu phải có ít nhất 6 ký tự"),
       phone: (value) => (/^\d{10}$/.test(value) ? null : "Số điện thoại phải có 10 chữ số"),
       birthday: (value) => (value ? null : "Vui lòng nhập ngày sinh"),

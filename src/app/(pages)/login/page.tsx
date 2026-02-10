@@ -35,7 +35,11 @@ export default function LoginPage() {
       password: "",
     },
     validate: {
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Vui lòng nhập email hợp lệ"),
+      email: (value) => {
+        // Regex kiểm tra email phải có @ và domain với dấu chấm phía sau (ví dụ: .com, .vn...)
+        const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
+        return emailRegex.test(value) ? null : "Vui lòng nhập email hợp lệ";
+      },
       password: (value) => (value.length >= 6 ? null : "Mật khẩu phải có ít nhất 6 ký tự"),
     },
   });
